@@ -10,6 +10,14 @@ This only works for the TI-NSpire CX OS 3.1. Porting to other OS's and models sh
 
 Code is a one-shot piece and isn't very elegant right now.
 
+It is also untested so use at your own risk. This program may crash your OS randomly, mess up random things or kill your cat.
+
+## How to use ##
+
+Run the hook installer. Turn off calc. Done.
+
+To remove, simply reset the NSpire.
+
 ## Limitations ##
 
 The hooking address I found seems to only work when the USB cable is plugged in. When I have time, I'll look for an address that will work for both when USB is plugged in and on battery.
