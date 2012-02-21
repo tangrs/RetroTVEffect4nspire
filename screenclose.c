@@ -1,10 +1,10 @@
 #include <os.h>
 
 #define SCREEN_BYTES_PERPIXEL (SCREEN_BYTES_SIZE/(SCREEN_WIDTH*SCREEN_HEIGHT))
-#define HOOK_ADDR 0x100b97b4 /* OS 3.1 TI-NSpire CX */
+#define HOOK_ADDR 0x100b97b4 /* OS 3.1 TI-NSpire CX. nts: needs better hooking place */
 
 HOOK_DEFINE(screen_blip) {
-    int halfheight = SCREEN_HEIGHT/2, accel = 16, halfwidth = SCREEN_WIDTH/2;
+    int halfheight = SCREEN_HEIGHT/2, halfwidth = SCREEN_WIDTH/2;
     char * scrbase = SCREEN_BASE_ADDRESS;
     void * scr = malloc(SCREEN_BYTES_SIZE);
     if (scr) {
@@ -28,8 +28,7 @@ HOOK_DEFINE(screen_blip) {
         scrptr += whiteamount*2;
         memset(scrptr, 0x00, blackamount);
 
-        halfheight -= accel;
-        accel = (accel/2 > 3) ? accel/2 : 3;
+        halfheight -= 4;
 
         sleep(1);
     }
@@ -62,7 +61,7 @@ HOOK_DEFINE(screen_blip) {
         memset(scrptr, 0x00, blackamount);
         scrptr += blackamount;
 
-        halfwidth -= 2;
+        halfwidth -= 4;
         sleep(1);
     }
     if (scr) {
